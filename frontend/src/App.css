@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Prata&display=swap');
+
+* {
+  font-family:"Merriweather Sans", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.prata-regular {
+  font-family: "Prata", serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.text-Shadowwhite{
+  text-shadow: black 2px 2px 2px !important;
+}
+#nav-toggle-button {
+  background-color:rgba(128, 128, 128, 0.591) !important;
+  color: gray;
+  }
+
+#card-form{
+  width: 100%;
+  max-width: 400px ; 
+  background-color: rgba(172, 152, 152, 0.185);
+  border-radius: 10px;
+}
