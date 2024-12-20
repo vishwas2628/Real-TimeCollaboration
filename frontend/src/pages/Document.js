@@ -28,6 +28,18 @@ const Document = () => {
         </div>
         <button className="btn btn-secondary m-2 rounded-pill">Download</button>
       </div>
+      <div className='container d-flex justify-content-center align-items-center'>
+      <div className="border-0 p-4 shadow-sm " style={{ width: '40rem' }}>
+          <div className="mb-3">
+            <p className="p-1" style={{fontSize:'2rem'}}>Title:</p>
+          </div>
+          <div className="mb-3">
+            <p className="p-2">Content:</p>
+            <p className=" bg-transparent">Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi quibusdam libero nostrum eum! Fugiat in alias reiciendis, animi deserunt facere atque necessitatibus cum accusamus repudiandae. Ipsa dolores nostrum unde facere ea eos aut, animi reprehenderit. Eligendi cupiditate, error rerum nobis quos sit esse totam in quo debitis incidunt officiis. Nostrum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi quibusdam libero nostrum eum! Fugiat in alias reiciendis, animi deserunt facere atque necessitatibus cum accusamus repudiandae. Ipsa dolores nostrum unde facere ea eos aut, animi reprehenderit. Eligendi cupiditate, error rerum nobis quos sit esse totam in quo debitis incidunt officiis. Nostrum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi quibusdam libero nostrum eum! Fugiat in alias reiciendis, animi deserunt facere atque necessitatibus cum accusamus repudiandae. Ipsa dolores nostrum unde facere ea eos aut, animi reprehenderit. Eligendi cupiditate, error rerum nobis quos sit esse totam in quo debitis incidunt officiis. Nostrum.</p>
+          </div>
+          <button type="submit" className="btn btn-secondary w-100">Read more</button>
+      </div>
+      </div>
     </div>
   );
 };
