@@ -9,6 +9,7 @@ import Dashboard from "./pages/Dashboard.js";
 import AddDoc from "./pages/AddDoc.js";
 import Update from "./pages/Update.js";
 import Document from "./pages/Document.js";
+import NotFound from "./components/NotFound.js";
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
           <Route path="/add" element={<AddDoc />} />
           <Route path="/update" element={<Update />} />
           <Route path="/doc/:docId" element={<Document />} />
+          <Route path="/*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
 )}
