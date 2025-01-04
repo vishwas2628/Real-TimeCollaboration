@@ -3,6 +3,8 @@ import {Link} from 'react-router-dom'
 
 
 const LandingPage = () => {
+    const userString = localStorage.getItem('user');
+    const user = userString?JSON.parse(userString):null;
   return (
     <div className='container text-center mt-5'>
       <div className='jumbotoron bg-light p-5'>
@@ -17,8 +19,15 @@ const LandingPage = () => {
         CollabTool offers all the features you need to stay productive.
         </p>
         <div>
-          <Link to="/register" className="btn btn-primary btn-lg me-3">Register</Link>
-          <Link to="/login" className="btn btn-danger btn-lg">Login</Link>
+          {user ?(
+            <Link to="/dashboard" className="btn btn-primary btn-lg me-3">Dashboard</Link>            
+        ):(          
+          <div>
+            <Link to="/register" className="btn btn-primary btn-lg me-3">Register</Link>
+            <Link to="/login" className="btn btn-danger btn-lg">Login</Link>
+            </div>
+        )
+        }
         </div>
       </div>
       <div className='mt-5'>

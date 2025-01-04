@@ -1,4 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { toast } from 'react-toastify'
 import Title from '../components/Title.js';
 
 
@@ -7,9 +10,32 @@ const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate();
+  const userString = localStorage.getItem('user');
+  const user = userString ? JSON.parse(userString) : null;
+
+
   const handleRegister = async (e) => {
     e.preventDefault();
+    setError('');
+    try {
+      const { data } = await axios.post('http://localhost:8080/api/auth/register', { name, email, password });
+      localStorage.setItem('token', data.token);
+      navigate('/login'); // Redirect to login if registration is successful
+    } catch (error) {
+      if (error.response && error.response.data && error.response.data.message) {
+        setError(error.response.data.message); // Set error message if registration fails
+      } else {
+        setError('An unexpected error occurred. Please try again later.');
+      }
+    }
   };
+  useEffect(() => {
+    if (user) {
+      toast.error("already login");
+      navigate('/dashboard')
+    }
+  }, [user])
 
   return (
     <div
@@ -20,7 +46,7 @@ const Register = () => {
     >
       <div
         className="card shadow-lg p-4" id='card-form'>
-        <Title className="text-center mb-4" text1={"Sign"} text2={"Up"}/>
+        <Title className="text-center mb-4" text1={"Sign"} text2={"Up"} />
         <form onSubmit={handleRegister}>
           <div className="mb-3">
             <label htmlFor="name" className="form-label">Username</label>

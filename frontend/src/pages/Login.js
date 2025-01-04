@@ -1,17 +1,46 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Title from '../components/Title.js'
-//import axios from 'axios';
+import { toast } from 'react-toastify'
+import axios from 'axios';
 
 const Login = () => {
-  const [email, setEmail] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(''); 
     const navigate = useNavigate();
+    const userString = localStorage.getItem('user');
+    const user = userString?JSON.parse(userString):null;
 
     const handleLogin = async (e) => {
         e.preventDefault();
+        try {
+            const { data } = await axios.post('http://localhost:8080/api/auth/login', { email, password });
+
+            // Save user data in local storage
+            console.log(data.username)
+            localStorage.setItem('user', JSON.stringify({ username: data.username, token: data.token }));
+
+            // Navigate to dashboard
+            navigate('/dashboard');
+        } catch (error) {
+            if (error.response && error.response.data && error.response.data.message) {
+                setError(error.response.data.message); 
+                navigate('/login');
+            } else {
+                setError('An unexpected error occurred. Please try again later.');
+                navigate('/login');
+            }
+        }
+        
       };
+
+      useEffect(()=>{
+        if (user) {
+          toast.error("already login");
+          navigate('/dashboard')     
+        }
+      },[user])
   return (
     <div className="container mt-5 d-flex justify-content-center align-items-center">
       <div className="card shadow-lg p-4" id='card-form'>

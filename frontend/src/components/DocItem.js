@@ -1,22 +1,28 @@
-import React from 'react'
+import React from 'react';
 import { Link } from 'react-router-dom';
 
-
-const DocItem = ({id, doc, name}) => {
-    return (
-        <Link
-        className="text-decoration-none card border border-secondary mb-3"
-        to={`/doc/${id}`}
-      >
-        <div className="card-body">
-          <h5 className="card-title">Title</h5>
-          <p className="card-text">
-            With supporting text below as a natural lead-in to additional content.
-          </p>
-          <Link className="btn btn-primary" to='/update'>Update Doc</Link>
+const DocItem = ({ doc }) => {
+  return (
+    <div className="card h-100 shadow-sm">
+      <div className="card-header bg-secondary text-white text-center">
+        <strong>{doc.title}</strong>
+      </div>
+      <div className="card-body d-flex flex-column">
+        <p className="card-text">
+          <small className="text-muted">
+            Created on: {new Date(doc.createdAt).toLocaleDateString()}
+          </small>
+        </p>
+        <div className="mt-auto">
+          <div className="d-flex justify-content-between">
+            <Link className="btn btn-success btn-sm" to={`/document/${doc._id}`}>
+              Open
+            </Link>
+          </div>
         </div>
-      </Link>
-    )
-}
+      </div>
+    </div>
+  );
+};
 
-export default DocItem
+export default DocItem;

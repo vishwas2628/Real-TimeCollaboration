@@ -37,9 +37,6 @@ documentRoutes.get('/:id', verifyToken, async (req, res) => {
         if (!document) {
             return res.status(404).json({ message: 'Document not found' });
         }
-        // if (document.owner.toString() !== req.user.id) {
-        //     return res.status(403).json({ message: 'Not authorized' });
-        // }
         res.json(document);
     } catch (error) {
         console.error('Error fetching document:', error);
@@ -49,26 +46,29 @@ documentRoutes.get('/:id', verifyToken, async (req, res) => {
 
 // Create a new document
 documentRoutes.post('/', verifyToken, async (req, res) => {
-    const { title, content } = req.body;
+    const { title, content, comment } = req.body;
     try {
         const newDocument = await Document.create({
             title,
             content,
+            comment,
             owner: req.user.id,
         });
+        // console.log('Received request data:', req.body); 
         res.json(newDocument);
     } catch (error) {
+        console.error('Error creating document:', error);
         res.status(500).json({ message: 'Server error' });
     }
 });
 
 // Update a document
 documentRoutes.put('/:id', verifyToken, async (req, res) => {
-    const { title, content } = req.body;
+    const { title, content ,comment} = req.body;
     try {
         const updatedDocument = await Document.findByIdAndUpdate(
             req.params.id,
-            { title, content },
+            { title, content,comment},
             { new: true }
         );
         res.json(updatedDocument);

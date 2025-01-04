@@ -15,7 +15,7 @@ userSchema.pre('save', async function (next) {
   try {
     const salt = await genSalt(10);
     this.password = await hash(this.password, salt);
-    console.log('Hashed Password during Registration:', this.password);
+    // console.log('Hashed Password during Registration:', this.password);
     next();  // Ensure that next() is called after hashing
   } catch (err) {
     console.error('Error during password hashing:', err);

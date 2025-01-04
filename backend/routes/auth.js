@@ -21,8 +21,8 @@ authRoutes.post('/register', async (req, res) => {
 
     //validating email format & strong password
     if (!validator.isEmail(email)) {
-      return res.status(404).json({message:"Please Enter valid email"});         
-  }
+      return res.status(404).json({ message: "Please Enter valid email" });
+    }
 
     // Create a new user with plain password (hashed in the model)
     const user = new User({ name, email, password });
@@ -34,7 +34,7 @@ authRoutes.post('/register', async (req, res) => {
     });
 
     // Respond with the token
-    res.status(201).json({ username: user.username,token:token });
+    res.status(201).json({ username: user.username, token: token });
   } catch (error) {
     res.status(500).json({ error: 'Server error' });
   }
@@ -51,7 +51,7 @@ authRoutes.post('/login', async (req, res) => {
     }
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-        return res.status(400).json({ message: 'Invalid password' });
+      return res.status(400).json({ message: 'Invalid password' });
     }
 
     //json web token
@@ -60,7 +60,7 @@ authRoutes.post('/login', async (req, res) => {
     });
 
     //
-    res.status(201).json({ username: user.name,token:token });
+    res.status(201).json({ username: user.name, token: token });
     console.log(user.name)
   } catch (error) {
     res.status(500).json({ error: 'Server error' });

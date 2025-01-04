@@ -7,7 +7,6 @@ const NavbarHome = () => {
     const [isOpen, setIsOpen] = useState(false);
     const userString = localStorage.getItem('user');
     const user = userString?JSON.parse(userString):null;
-    console.log(user)
 
     const handleLogout = () => {
         // Remove user data from local storage
@@ -36,7 +35,7 @@ const NavbarHome = () => {
                     {user ? (
                         <ul className="navbar-nav">
                             <li className="nav-item">
-                                <button className="btn btn-link nav-link" onClick={handleLogout}>{user.username}Logout</button>
+                                <button className="btn btn-link text-black nav-link" onClick={handleLogout}>{user.username}: Logout</button>
                             </li>
                         </ul>
                     ) : (
