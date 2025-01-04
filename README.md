@@ -18,7 +18,7 @@ A powerful real-time collaboration platform for document editing, allowing multi
 
 *Login page*
 
-![alt text](image-1.png)
+![alt text]([image-1.png](https://github.com/vishwas2628/Real-TimeCollaboration/blob/master/image-2.png))
 
 *document page*
 
