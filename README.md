@@ -17,9 +17,11 @@ A powerful real-time collaboration platform for document editing, allowing multi
 ![alt text](image.png)
 
 *Login page*
+
 ![alt text](image-1.png)
 
 *document page*
+
 ![alt text](image-2.png)
 
 *Dashboard*
